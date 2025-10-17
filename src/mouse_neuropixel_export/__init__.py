@@ -1,0 +1,1 @@
+from mouse_neuropixel_export.version import __version__
