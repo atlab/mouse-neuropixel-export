@@ -1,1 +1,1 @@
-from mouse_neuropixel_export.version import __version__
+from mouse_neuropixel_export._version import __version__
