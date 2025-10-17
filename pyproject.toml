@@ -1,0 +1,38 @@
+[project]
+name = "mouse-neuropixel-export"
+dynamic = ["version"]
+description = "Export utilities and notebooks for Tolias Lab mouse Neuropixels data"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+license = { text = "MIT" }
+authors = [{ name = "Stelios Papadopoulos, Maria Diamantaki" }]
+
+dependencies = [
+  "datajoint==0.14.3",
+  "numpy",
+  "pandas",
+  "matplotlib",
+  "jupyterlab",
+  "ipykernel",
+  "python-dotenv>=1.1.1",
+]
+
+[tool.uv]
+python-preference = "only-managed"
+
+# --- Hatch build configuration ---
+[tool.hatch.metadata]
+allow-direct-references = true  # optional
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/mouse_neuropixel_export"]
+
+[tool.hatch.version]
+source = "vcs"
+
+[tool.hatch.build.hooks.vcs]
+version-file = "src/mouse_neuropixel_export/version.py"
+
+[build-system]
+requires = ["hatchling>=1.17.0", "hatch-vcs>=0.3"]
+build-backend = "hatchling.build"
