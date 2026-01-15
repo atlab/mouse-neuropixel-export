@@ -127,7 +127,7 @@ This is one-time per environment (redo only if you recreate/delete the venv).
 
 It works when the project’s virtual environment is the default `.venv/` inside the repo.
 
-If the virtual environment lives **outside** the repo, install editable by pointing to that environment’s Python interpreter:
+If the virtual environment lives **outside** the repo, install editable by pointing to that environment’s Python interpreter. This works only if `UV_PROJECT_ENVIRONMENT` is set to that external environment.
 
 ```bash
 # Linux, macOS, or WSL, Windows
@@ -136,7 +136,8 @@ uv pip install --python "$(uv run python -c 'import sys; print(sys.executable)')
 
 ```powershell
 # Windows (PowerShell)
-uv pip install --python "$(uv run python -c \"import sys; print(sys.executable)\")" -e .
+$py = uv run python -c "import sys; print(sys.executable)"
+uv pip install --python $py -e .
 ```
 
 ### Generate a Jupyter server config file
@@ -148,7 +149,7 @@ Create a repo-local Jupyter config.
 #### 2. Generate the file
 ```bash
 # Linux, macOS, WSL
-JUPYTER_CONFIG_DIR=./.jupyter jupyter server --generate-config
+JUPYTER_CONFIG_DIR=./.jupyter uv run jupyter server --generate-config
 ```
 ```powershell
 # Windows Powershell
@@ -182,7 +183,7 @@ uv run python -c "from jupyter_server.auth import passwd; print(passwd())"
 #### 3. Edit `.jupyter/jupyter_server_config.py` and include:
 
 ```python
-c.PasswordIdentityProvider.hashed_password = <paste string here>
+c.PasswordIdentityProvider.hashed_password = "<paste string here>"
 ```
 #### 4. Launch Jupyter with custom config:
 
@@ -230,7 +231,8 @@ uv pip install --python "$(uv run python -c 'import sys; print(sys.executable)')
 
 ```powershell
 # Windows (PowerShell)
-uv pip install --python "$(uv run python -c \"import sys; print(sys.executable)\")" -e .
+$py = uv run python -c "import sys; print(sys.executable)"
+uv pip install --python $py -e .
 ```
 #### Option 2:
 
