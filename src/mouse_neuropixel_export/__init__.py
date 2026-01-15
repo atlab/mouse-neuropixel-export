@@ -1,1 +1,6 @@
-from mouse_neuropixel_export._version import __version__
+from importlib.metadata import version, PackageNotFoundError
+
+try:
+    __version__ = version("mouse-neuropixel-export")
+except PackageNotFoundError:
+    __version__ = "0+unknown"
