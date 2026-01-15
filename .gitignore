@@ -1,3 +1,4 @@
+src/mouse_neuropixel_export/_version.py
 .jupyter/
 
 # Byte-compiled / optimized / DLL files
@@ -207,5 +208,6 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
-src/mouse_neuropixel_export/_version.py
-src/mouse_neuropixel_export/_version.py
+
+
+
